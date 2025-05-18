@@ -21,6 +21,7 @@ public class UserService: IUserService
         {
             Id = user.Id,
             Login = user.Login,
+            Password = user.Password,
             Name = user.Name,
             Gender = user.Gender,
             Birthday = user.Birthday,

@@ -25,7 +25,7 @@ public class UserRepository : IUserRepository
 
     public async Task CreateUser(UserEntity user)
     {
-        if (!_context.Users.Any(x => x.Login == x.CreatedBy && x.Admin == true))
+        if (!_context.Users.Any(x => x.Login == user.CreatedBy && x.Admin == true))
         {
             throw new AuthenticationException("Access denied");
         }
@@ -92,7 +92,7 @@ public class UserRepository : IUserRepository
     public Task<List<UserEntity>> GetUsersOlderThan(int age)
     {
         return  _context.Users
-            .Where(x => x.Birthday!.Value.Year - DateTime.UtcNow.Year > age) 
+            .Where(x => DateTime.UtcNow.Year - x.Birthday!.Value.Year > age) 
             .Take(10000000)
             .ToListAsync();
     }
