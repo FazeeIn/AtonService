@@ -10,8 +10,8 @@ public class UserConfiguration: IEntityTypeConfiguration<UserEntity>
     {
         builder.HasKey(x => x.Id);
         
-        var id = Guid.NewGuid();
-        var date = DateTime.UtcNow;
+        var id = Guid.Parse("11111111-1111-1111-1111-111111111111");
+        var date = DateTime.SpecifyKind(new DateTime(2000, 1, 1), DateTimeKind.Utc);
 
         builder.HasData(new UserEntity
         {
